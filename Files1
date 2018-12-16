@@ -1,0 +1,92 @@
+// ConsoleApplication4.cpp : Этот файл содержит функцию "main". Здесь начинается и заканчивается выполнение программы.
+//
+
+#include "pch.h"
+#include <iostream>
+#include <math.h>
+
+int getInt() 
+{
+	int res = 0;
+	char no = '\n';
+	while ((scanf_s("%i%c", &res, &no) != 2) || (no != '\n') || (res <= 0)) 
+	{
+		while (getchar() != '\n');
+		printf_s("Error! Input correct value: ");
+	}
+
+	return res;
+}
+int getIntLess(int less) 
+{
+	int res = 0;
+	char no = '\n';
+	while ((scanf_s("%i%c", &res, &no) != 2) || (no != '\n') || (res <=0) || (res > less))
+	{
+		while (getchar() != '\n');
+		printf_s("Error! Input correct value: ");
+	}
+
+	return res;
+}
+int main()
+{
+	printf("Vvedite length of massive: ");
+	int size = getInt();
+
+	printf("Choose option of massive: \n");
+	printf("1) Randomly generated\n");
+	printf("2) Manual input\n");
+	int *a = new int[size];
+	switch (getIntLess(3))
+	{
+	case 1: {
+		for (int i = 0; i < size; i++)
+		{
+			a[i] = rand();
+			printf("%d\n", a[i]);
+		}
+		break;
+	}
+	case 2: {
+		for (int i = 0; i < size; i++)
+		{
+			printf("a[%i] = ", i);
+			a[i] = getInt();
+		}
+		break;
+	}
+	}
+
+	printf("What should program do?\n");
+	printf("1)Find the Max element and amount\n");
+	printf("2)Display array\n");
+	printf("3)Exit program");
+	switch (getIntLess(3)) {
+	case 1: {
+		int max = a[0];
+		for (int i = 0; i < size; i++)
+		{
+			if (a[i] > max)
+			{
+				max = a[i];
+				printf("Max = %i", max);
+			}
+			for (int i = max; max < size;) 
+			{
+				int amount = max + i;
+		    }
+		}
+		break;
+	}
+	case 2: {
+		for (int i = 0; i < size; i++)
+		{
+			printf("array[%i] = %i ", i, a[i]);
+		}
+	}
+	case 3: {
+		exit(0);
+	}
+	}
+}
